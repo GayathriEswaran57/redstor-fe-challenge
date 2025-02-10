@@ -5,15 +5,13 @@
   <div class="gallery">
     <!-- toDO Could you improve the styling to be responsive? -->
     <ng-container *ngFor="let photo of photos$ | async">
-      <mat-card class="gallery-item thumbnails" (click)="handleGotoPhoto(photo)">
-        <img mat-card-image [src]="photo.urls.small" [alt]="photo.alt_description" />
-        <mat-card-content fxLayout="row" fxLayoutAlign="end" fxLayoutGap="12px">
-          <p>
-            <mat-icon inline>favorite</mat-icon>
-           {{ photo.likes }} likes
-          </p>
-        </mat-card-content>
-      </mat-card>
+      <redstor-gallery-card
+      [photos]="photo"
+      [ImgSrc] = "photo.urls.small"
+      [altDescription] = "photo.alt_description"
+      [likes]="photo.likes"
+      (handleClick) = "handleGotoPhoto($event)"
+      ></redstor-gallery-card>
     </ng-container>
   </div>
 </div>

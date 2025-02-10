@@ -1,7 +1,6 @@
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,7 +16,7 @@ const routes: Routes = [
 ]
 @NgModule({
   declarations: [PhotoComponent,CapitalizePipe],
-  imports: [CommonModule, RouterModule.forChild(routes), MatToolbarModule, MatProgressBarModule, MatCardModule, MatIconModule],
+  imports: [CommonModule, RouterModule.forChild(routes), MatProgressBarModule, MatCardModule, MatIconModule],
   exports: [PhotoComponent]
 })
 export class PhotoModule {}

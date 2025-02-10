@@ -1,0 +1,14 @@
+<mat-card class="gallery-item thumbnails" (click)="handleUserClick(photos)">
+    <img mat-card-image [src]="ImgSrc" [alt]="altDescription" />
+    <mat-card-content *ngIf="likes; else elseBlock" fxLayout="row" fxLayoutAlign="end" fxLayoutGap="12px">
+        <p>
+            <mat-icon inline>favorite</mat-icon>
+            {{ photos.likes }} likes
+        </p>
+    </mat-card-content>
+    <ng-template #elseBlock>
+    <mat-card-content >
+        <p class="title" style="padding-top: 12px">{{ photos.title }}</p>
+      </mat-card-content>
+    </ng-template>
+</mat-card>

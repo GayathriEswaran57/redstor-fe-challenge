@@ -22,7 +22,12 @@
     "lib": ["ES2022", "dom"],
     "paths": {
       "@app/*": ["src/app/*"],
-      "@environments/*": ["src/environments/*"]
+      "@environments/*": [
+        "src/environments/*"
+      ],
+      "redstor-gallery-card": [
+        "./dist/redstor-gallery-card"
+      ]
     }
   },
   "angularCompilerOptions": {

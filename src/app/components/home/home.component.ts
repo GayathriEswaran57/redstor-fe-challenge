@@ -1,26 +1,25 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy, ChangeDetectorRef, Signal } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy, Signal } from '@angular/core';
 import { ICollection } from '@app/interfaces';
 import { UnsplashService } from '@app/services';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Router, RouterModule } from '@angular/router';
 import { CollectionsFacade } from './../../store';
 import { MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import { RedstorGalleryCardComponent } from 'projects/redstor-gallery-card/src/public-api';
 
 // toDo Transform this module in a standalone component
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatToolbarModule, MatProgressBarModule, MatCardModule, MatPaginatorModule],
+  imports: [CommonModule, RouterModule, MatProgressBarModule, RedstorGalleryCardComponent, MatPaginatorModule],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
   readonly unsplashService: UnsplashService = inject(UnsplashService);
+  private readonly router: Router = inject(Router);
   pageSize: number = 10;
   pageIndex: number = 1;
 
@@ -43,5 +42,8 @@ export class HomeComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex + 1;
     this.collectionsFacade.loadCollections(this.pageSize,this.pageIndex);
+  }
+  handleRouting(collection:any) {
+    return this.router.navigateByUrl(`/collection/${collection.id}`);
   }
 }
