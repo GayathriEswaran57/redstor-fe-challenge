@@ -38,7 +38,8 @@
     }
   }
 
-  &.preview {
+  .preview {
+    max-width: 1200px;
     padding-bottom: 0;
     border-radius: 8px;
 

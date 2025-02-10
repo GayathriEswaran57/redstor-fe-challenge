@@ -1,27 +1,24 @@
-<!-- toDo Could you optimise this piece of code? -->
-<mat-toolbar>
-  <span>Redstor FE Challenger</span>
-</mat-toolbar>
-
-<!-- toDo Could you optimise this piece of code? -->
-<div class="breadcrumbs">
-  <a class="active"><span>Collections</span></a>
-</div>
 
 <div class="layout-container">
   <!-- toDo Could you optimise this piece of code? -->
-  <mat-progress-bar *ngIf="isLoading"></mat-progress-bar>
-
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading()"></mat-progress-bar>
+  <mat-paginator [length]="length()"
+  [pageSize]="pageSize"
+  [pageSizeOptions] ="[10,20,30]"
+  (page)="handlePageEvent($event)"              >
+  </mat-paginator>
   <div class="gallery">
     <!-- toDo Is there another way to rewrite this with new Angular 17 features? -->
-    <ng-container *ngFor="let collection of collections">
+   @for(collection of collections(); track collection.id) {
+    <ng-container *ngFor="let collection of collections()">
       <!-- toDO Could you improve the styling to be responsive? -->
       <mat-card class="gallery-item thumbnails" [routerLink]="'/collection/' + collection.id">
         <img mat-card-image [src]="collection.cover_photo.urls.small" [alt]="collection.cover_photo.description" />
         <mat-card-content>
-          <p class="title">{{ collection.title }}</p>
+          <p class="title" style="padding-top: 12px">{{ collection.title }}</p>
         </mat-card-content>
       </mat-card>
     </ng-container>
+  }
   </div>
 </div>

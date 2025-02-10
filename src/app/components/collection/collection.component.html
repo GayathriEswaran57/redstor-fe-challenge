@@ -1,19 +1,7 @@
-<!-- toDo Could you optimise this piece of code? -->
-<mat-toolbar>
-  <span>Redstor FE Challenger</span>
-</mat-toolbar>
-
-<!-- toDo Could you optimise this piece of code? -->
-<div class="breadcrumbs">
-  <a routerLink="/"><span>Collections</span></a>
-  <span>></span>
-  <a class="active"><span>Collection</span></a>
-</div>
-
-<div class="layout-container">
+<router-outlet *ngIf= "childActive$()"></router-outlet>
+<div *ngIf= "!childActive$()" class="layout-container">
   <!-- toDo Could you optimise this piece of code? -->
-  <mat-progress-bar *ngIf="isLoading$ | async"></mat-progress-bar>
-
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading$()"></mat-progress-bar>
   <div class="gallery">
     <!-- toDO Could you improve the styling to be responsive? -->
     <ng-container *ngFor="let photo of photos$ | async">
@@ -22,7 +10,7 @@
         <mat-card-content fxLayout="row" fxLayoutAlign="end" fxLayoutGap="12px">
           <p>
             <mat-icon inline>favorite</mat-icon>
-            {{ photo.likes }} likes
+           {{ photo.likes }} likes
           </p>
         </mat-card-content>
       </mat-card>

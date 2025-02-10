@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { CollectionsActions } from './collections.actions';
 import { map, switchMap } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CollectionsEffects {
   private readonly actions$: Actions = inject(Actions);
   private readonly unsplash: UnsplashService = inject(UnsplashService);
@@ -12,13 +12,13 @@ export class CollectionsEffects {
   loadCollections$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CollectionsActions.loadCollections),
-      switchMap(() =>
+      switchMap(({pageSize, page}) =>
         this.unsplash
-          .listCollections()
+          .listCollections(pageSize, page)
           .pipe(
             map(result =>
               result.type === 'success'
-                ? CollectionsActions.loadCollectionsSuccess(result.response.results || [])
+                ? CollectionsActions.loadCollectionsSuccess(result.response.results || [], result.response.total)
                 : CollectionsActions.loadCollectionsFailure()
             )
           )

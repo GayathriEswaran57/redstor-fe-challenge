@@ -11,6 +11,8 @@ import { CollectionsEffects, metaReducers, reducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { environment } from '@environments/environment';
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,8 @@ import { environment } from '@environments/environment';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
+    BreadcrumbModule,
+    MatToolbarModule,
     // Store
     // toDo Is there a way to load the store just for the module or component in use?
     StoreModule.forRoot(reducers, { metaReducers }),

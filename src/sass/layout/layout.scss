@@ -46,6 +46,10 @@
     border-radius: 12px;
     background-color: #fafafa;
     cursor: pointer;
+    overflow: hidden;
+    img {
+      height:100%;
+    }
 
     &:hover {
       box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.14), 0 8px 8px 0 rgba(0, 0, 0, 0.12) !important;

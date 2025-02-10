@@ -1,26 +1,11 @@
-<!-- toDo Could you optimise this piece of code? -->
-<mat-toolbar>
-  <span>Redstor FE Challenger</span>
-</mat-toolbar>
-
-<!-- toDo Could you optimise this piece of code? -->
-<div class="breadcrumbs">
-  <a routerLink="/"><span>Collections</span></a>
-  <span>></span>
-  <a (click)="handleGotoCollection()"><span>Collection</span></a>
-  <span>></span>
-  <a class="active"><span>Photo</span></a>
-</div>
-
 <div class="layout-container">
   <!-- toDo Could you optimise this piece of code? -->
-  <mat-progress-bar *ngIf="isLoading$ | async"></mat-progress-bar>
+  <mat-progress-bar mode="indeterminate" *ngIf="isloadingBool === true"></mat-progress-bar>
 
-  <div class="gallery" fxLayout.sm="column">
+  <div *ngIf="isloadingBool === false">
     <!-- toDO Could you improve the styling to be responsive? -->
     <mat-card *ngIf="photo$ | async as photo" class="preview">
       <!-- toDO Why is throwing some console errors? -->
-
       <mat-card-header>
         <img mat-card-avatar [src]="photo.user.profile_image.medium" />
         <mat-card-title>{{ photo.user.first_name }} {{ photo.user.last_name }}</mat-card-title>
@@ -29,24 +14,23 @@
           {{ photo.user.location }}
         </mat-card-subtitle>
       </mat-card-header>
-
       <mat-card-content>
         <div>
           <div>
             <!-- toDO Is there another way to do this operation? -->
-            <p>{{ photo.description?.charAt(0)?.toUpperCase() }}{{ photo.description?.slice(1) }}</p>
+            <p>{{ photo.description | capitalize }}</p>
           </div>
           <div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="end">
-            <p fxLayoutAlign="center">
-              <mat-icon inline>favorite</mat-icon>
-              {{ photo.likes }} likes &nbsp;|&nbsp;&nbsp;
+            <p fxLayoutAlign="center" >
+              <mat-icon inline style="align-content: center;">favorite</mat-icon>
+             {{ photo.likes }} likes &nbsp;|&nbsp;&nbsp;
               <mat-icon inline>visibility</mat-icon>
               {{ photo.views }} views
             </p>
           </div>
         </div>
       </mat-card-content>
-
+     
       <img mat-card-image [src]="photo.urls.full" [alt]="photo.alt_description" />
     </mat-card>
   </div>
