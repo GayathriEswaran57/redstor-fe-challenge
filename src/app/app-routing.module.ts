@@ -4,11 +4,11 @@ import { HomeComponent, CollectionComponent } from './components';
 
 // toDo How could we improve this routing?
 const routes: Routes = [
-  { path: '', component: HomeComponent, data: { breadcrumb: 'Collections' } },
+  { path: '', component: HomeComponent, data: { breadcrumb: 'COLLECTIONS' } },
   {
     path: 'collection/:collectionId',
     component: CollectionComponent,
-    data: { breadcrumb: 'Collection' },
+    data: { breadcrumb: 'COLLECTION' },
     children: [
       {
         path: 'photo/:photoId',

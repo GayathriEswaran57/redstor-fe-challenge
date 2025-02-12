@@ -17,6 +17,7 @@ export class RedstorGalleryCardComponent {
   @Input () ImgSrc:any;
   @Input () altDescription:any;
   @Input () likes?:any;
+  @Input () dynamicContent?:any;
   @Output() handleClick: EventEmitter<any> = new EventEmitter<any>();
 
   handleUserClick(e:any) {

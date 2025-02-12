@@ -3,7 +3,7 @@
     <mat-card-content *ngIf="likes; else elseBlock" fxLayout="row" fxLayoutAlign="end" fxLayoutGap="12px">
         <p>
             <mat-icon inline>favorite</mat-icon>
-            {{ photos.likes }} likes
+            {{ photos.likes }} {{dynamicContent}}
         </p>
     </mat-card-content>
     <ng-template #elseBlock>

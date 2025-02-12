@@ -12,7 +12,15 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { environment } from '@environments/environment';
 import { BreadcrumbModule } from 'xng-breadcrumb';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; 
+import { RedstorToolBarComponent } from 'projects/redstor-components/src/lib/tool-bar/redstor-tool-bar.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +29,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AppRoutingModule,
     BrowserAnimationsModule,
     BreadcrumbModule,
-    MatToolbarModule,
+    RedstorToolBarComponent,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     // Store
     // toDo Is there a way to load the store just for the module or component in use?
     StoreModule.forRoot(reducers, { metaReducers }),

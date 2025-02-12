@@ -6,17 +6,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PhotoComponent } from './photo.component';
 import { CapitalizePipe } from '@app/pipes/capatalize.pipe';
+import {  TranslatePipe } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
     path: '',
     component: PhotoComponent,
-    data: { breadcrumb: 'Photo' }
+    data: { breadcrumb: 'PHOTO' }
   }
 ]
 @NgModule({
   declarations: [PhotoComponent,CapitalizePipe],
-  imports: [CommonModule, RouterModule.forChild(routes), MatProgressBarModule, MatCardModule, MatIconModule],
+  imports: [CommonModule, RouterModule.forChild(routes), MatProgressBarModule, MatCardModule, MatIconModule, TranslatePipe],
   exports: [PhotoComponent]
 })
 export class PhotoModule {}

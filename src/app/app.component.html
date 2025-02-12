@@ -1,5 +1,11 @@
-<mat-toolbar>
-  <span>Redstor FE Challenger</span>
-</mat-toolbar>
-<xng-breadcrumb class="breadcrumbs" separator=">"></xng-breadcrumb>
+<redstor-tool-bar 
+[dynamicContent] = "'TOOLTITLE'| translate"
+[languages] = "languages"
+(handleClick) = switchLanguage($event)
+></redstor-tool-bar>
+<xng-breadcrumb class="breadcrumbs" separator=">">
+    <ng-container *xngBreadcrumbItem="let breadcrumb">
+      <ng-container>{{ breadcrumb | translate }}</ng-container>
+    </ng-container>
+  </xng-breadcrumb>
 <router-outlet></router-outlet>

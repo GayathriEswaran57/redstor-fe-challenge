@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CollectionComponent } from './collection.component';
-import { RedstorGalleryCardComponent } from 'projects/redstor-gallery-card/src/public-api';
+
+import { TranslatePipe } from '@ngx-translate/core';
+import { RedstorGalleryCardComponent } from 'projects/redstor-components/src/public-api';
+
 
 @NgModule({
   declarations: [CollectionComponent],
-  imports: [CommonModule, RouterModule, MatProgressBarModule, RedstorGalleryCardComponent],
+  imports: [CommonModule, RouterModule, MatProgressBarModule, RedstorGalleryCardComponent,TranslatePipe],
   exports: [CollectionComponent]
 })
 export class CollectionModule {}

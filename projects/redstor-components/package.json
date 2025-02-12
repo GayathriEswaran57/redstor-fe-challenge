@@ -1,5 +1,5 @@
 {
-  "name": "redstor-gallery-card",
+  "name": "redstor-components",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^17.0.0",

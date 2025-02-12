@@ -9,6 +9,7 @@
       [photos]="photo"
       [ImgSrc] = "photo.urls.small"
       [altDescription] = "photo.alt_description"
+      [dynamicContent]= "'LIKES' | translate"
       [likes]="photo.likes"
       (handleClick) = "handleGotoPhoto($event)"
       ></redstor-gallery-card>

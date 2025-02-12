@@ -1,13 +1,12 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy, Signal } from '@angular/core';
 import { ICollection } from '@app/interfaces';
 import { UnsplashService } from '@app/services';
-import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { CollectionsFacade } from './../../store';
 import { MatPaginatorModule, PageEvent} from '@angular/material/paginator';
-import { RedstorGalleryCardComponent } from 'projects/redstor-gallery-card/src/public-api';
+import { RedstorGalleryCardComponent } from 'projects/redstor-components/src/public-api';
 
 // toDo Transform this module in a standalone component
 @Component({

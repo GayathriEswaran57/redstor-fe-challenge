@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IPhoto } from '@app/interfaces';
 import { UnsplashService } from '@app/services';
 import { BehaviorSubject, Observable, map } from 'rxjs';
