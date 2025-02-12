@@ -17,7 +17,6 @@ import { RedstorGalleryCardComponent } from 'projects/redstor-components/src/pub
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  readonly unsplashService: UnsplashService = inject(UnsplashService);
   private readonly router: Router = inject(Router);
   pageSize: number = 10;
   pageIndex: number = 1;
