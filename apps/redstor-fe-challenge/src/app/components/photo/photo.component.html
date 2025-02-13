@@ -1,0 +1,37 @@
+<div class="layout-container">
+  <!-- toDo Could you optimise this piece of code? -->
+  <mat-progress-bar mode="indeterminate" *ngIf="isloadingBool === true"></mat-progress-bar>
+
+  <div *ngIf="isloadingBool === false">
+    <!-- toDO Could you improve the styling to be responsive? -->
+    <mat-card *ngIf="photo$ | async as photo" class="preview">
+      <!-- toDO Why is throwing some console errors? -->
+      <mat-card-header>
+        <img mat-card-avatar [src]="photo.user.profile_image.medium" />
+        <mat-card-title>{{ photo.user.first_name }} {{ photo.user.last_name }}</mat-card-title>
+        <mat-card-subtitle *ngIf="photo.user.location">
+          <mat-icon inline>where_to_vote</mat-icon>
+          {{ photo.user.location }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          <div>
+            <!-- toDO Is there another way to do this operation? -->
+            <p>{{ photo.description | capitalize }}</p>
+          </div>
+          <div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="end">
+            <p fxLayoutAlign="center">
+              <mat-icon inline style="align-content: center">favorite</mat-icon>
+              {{ photo.likes }} {{ 'LIKES' | translate }} &nbsp;|&nbsp;&nbsp;
+              <mat-icon inline>visibility</mat-icon>
+              {{ photo.views }} {{ 'VIEWS' | translate }}
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <img mat-card-image [src]="photo.urls.full" [alt]="photo.alt_description" />
+    </mat-card>
+  </div>
+</div>

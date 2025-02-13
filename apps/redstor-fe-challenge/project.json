@@ -1,0 +1,105 @@
+{
+  "name": "redstor-fe-challenge",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/redstor-fe-challenge/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/redstor-fe-challenge",
+        "index": "apps/redstor-fe-challenge/src/index.html",
+        "main": "apps/redstor-fe-challenge/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/redstor-fe-challenge/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/redstor-fe-challenge/src/favicon.ico",
+          "apps/redstor-fe-challenge/src/assets",
+          {
+            "glob": "**/*",
+            "input": "apps/redstor-fe-challenge/src/assets/i18n/",
+            "output": "/assets/i18n/"
+          }
+        ],
+        "styles": [
+          "@angular/material/prebuilt-themes/deeppurple-amber.css",
+          "apps/redstor-fe-challenge/src/sass/main.scss",
+          "apps/redstor-fe-challenge/src/styles.scss"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/redstor-fe-challenge/src/environments/environment.ts",
+              "with": "apps/redstor-fe-challenge/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "redstor-fe-challenge:build:production"
+        },
+        "development": {
+          "buildTarget": "redstor-fe-challenge:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "redstor-fe-challenge:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/redstor-fe-challenge/tsconfig.spec.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/redstor-fe-challenge/src/favicon.ico", "apps/redstor-fe-challenge/src/assets"],
+        "styles": [
+          "@angular/material/prebuilt-themes/deeppurple-amber.css",
+          "apps/redstor-fe-challenge/src/sass/main.scss",
+          "apps/redstor-fe-challenge/src/styles.scss"
+        ],
+        "scripts": []
+      }
+    }
+  }
+}
