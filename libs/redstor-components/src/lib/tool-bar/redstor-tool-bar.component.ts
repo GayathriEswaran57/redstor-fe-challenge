@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @Component({
   selector: 'redstor-tool-bar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatSelectModule],
+  imports: [MatToolbarModule, MatSelectModule],
   templateUrl: './redstor-tool-bar.component.html',
   styleUrl: './redstor-tool-bar.component.scss'
 })

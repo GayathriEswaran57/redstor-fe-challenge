@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'redstor-gallery-card',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule],
+  imports: [MatCardModule, MatIconModule],
   templateUrl: './redstor-gallery-card.component.html',
   styleUrl: `./redstor-gallery-card.component.scss`
 })

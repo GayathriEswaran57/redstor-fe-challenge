@@ -2,9 +2,11 @@
   <span>{{ dynamicContent }}</span>
   <mat-form-field class="language-selector">
     <mat-select placeholder="Translate" (selectionChange)="handleUserClick($event.value)">
-      <mat-option *ngFor="let language of languages" [value]="language.code">
-        {{ language.viewValue }}
-      </mat-option>
+      @for (language of languages; track language) {
+        <mat-option [value]="language.code">
+          {{ language.viewValue }}
+        </mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </mat-toolbar>
