@@ -22,9 +22,11 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@environments/*": ["src/environments/*"],
-      "redstor-gallery-card": ["./dist/redstor-gallery-card"]
+      "@redstor-components": ["./libs/redstor-components"]
     },
-    "rootDir": "."
+    "rootDir": ".",
+    "skipLibCheck": false,
+    "strict":true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

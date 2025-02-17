@@ -1,18 +1,26 @@
-<router-outlet *ngIf="childActive$()"></router-outlet>
-<div *ngIf="!childActive$()" class="layout-container">
-  <!-- toDo Could you optimise this piece of code? -->
-  <mat-progress-bar mode="indeterminate" *ngIf="isLoading$()"></mat-progress-bar>
-  <div class="gallery">
-    <!-- toDO Could you improve the styling to be responsive? -->
-    <ng-container *ngFor="let photo of photos$ | async">
-      <redstor-gallery-card
-        [photos]="photo"
-        [ImgSrc]="photo.urls.small"
-        [altDescription]="photo.alt_description"
-        [dynamicContent]="'LIKES' | translate"
-        [likes]="photo.likes"
-        (handleClick)="handleGotoPhoto($event)"
-      ></redstor-gallery-card>
-    </ng-container>
+@if (childActive$()) {
+  <router-outlet></router-outlet>
+}
+@else {
+  <div class="layout-container">
+    <!-- toDo Could you optimise this piece of code? -->
+    @if (isLoading$()) {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+    <div class="gallery">
+      <!-- toDO Could you improve the styling to be responsive? -->
+      @for (photo of photos$ | async; track photo) {
+        <redstor-gallery-card
+          [photos]="photo"
+          [ImgSrc]="photo.urls.small"
+          [altDescription]="photo.alt_description"
+          [dynamicContent]="'LIKES' | translate"
+          [likes]="photo.likes"
+          (handleClick)="handleGotoPhoto($event)"
+        ></redstor-gallery-card>
+      } @empty {
+        <div>No Items Available!</div>
+      }
+    </div>
   </div>
-</div>
+}

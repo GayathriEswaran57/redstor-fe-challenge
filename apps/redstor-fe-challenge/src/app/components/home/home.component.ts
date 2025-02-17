@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy, Signal } from '@angular/core';
 import { ICollection } from '../../interfaces';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { CommonModule } from '@angular/common';
+
 import { Router, RouterModule } from '@angular/router';
 import { CollectionsFacade } from './../../store';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
@@ -11,7 +11,7 @@ import { RedstorGalleryCardComponent } from '../../../../../../libs/redstor-comp
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatProgressBarModule, RedstorGalleryCardComponent, MatPaginatorModule],
+  imports: [RouterModule, MatProgressBarModule, RedstorGalleryCardComponent, MatPaginatorModule],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

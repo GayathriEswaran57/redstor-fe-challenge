@@ -2,13 +2,13 @@
   "name": "redstor-fe-challenge",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
+  "sourceRoot": "apps/redstor-fe-challenge/src",
+  "prefix": "app",
   "generators": {
     "@schematics/angular:component": {
       "style": "scss"
     }
   },
-  "sourceRoot": "apps/redstor-fe-challenge/src",
-  "prefix": "app",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -99,6 +99,55 @@
           "apps/redstor-fe-challenge/src/styles.scss"
         ],
         "scripts": []
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/redstor-fe-challenge/.storybook",
+        "browserTarget": "redstor-fe-challenge:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/redstor-fe-challenge",
+        "configDir": "apps/redstor-fe-challenge/.storybook",
+        "browserTarget": "redstor-fe-challenge:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c apps/redstor-fe-challenge/.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build-storybook"],
+      "options": {
+        "buildTarget": "redstor-fe-challenge:build-storybook",
+        "staticFilePath": "dist/storybook/redstor-fe-challenge",
+        "spa": true
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "redstor-fe-challenge:build-storybook:ci"
+        }
       }
     }
   }
